@@ -6,4 +6,5 @@ Packages needed: "tidyverse", "sf", "data.table", "here", "raster", "ggspatial",
 Running the code:
 
 git clone https://github.com/almanevala/CWR.git
+
 cd CWR
