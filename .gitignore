@@ -6,3 +6,6 @@ data/
 .RData
 .Ruserdata
 .DS_Store
+.RData
+.RDataTmp
+.Rhistory
