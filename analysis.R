@@ -131,6 +131,11 @@ status_colors = list(
   "new" = "green"
 )
 
+status_labels = 
+  c(disappeared = "No observations since 2000",
+    persistent = "Observations recorder before and after 2000",
+    new = "Only observations after 2000")
+
 plots <- imap(df_3035, ~{
   country <- .y
   pts <- .x
@@ -152,18 +157,21 @@ plots <- imap(df_3035, ~{
     pts_color <- .x
     pts_status <- pts %>% filter(status == status_type)
     
+    current_title <- paste0(tools::toTitleCase(country), " — ", status_labels[[status_type]])
+    
     ggplot() +
       annotation_map_tile(type = "osm", zoom = 12) +
       geom_sf(data = shp, fill = "gray70", color = "gray20", linewidth = 0.8, alpha = 0.5) +
       geom_sf(data = clipped_grid, fill = NA, color = "black", alpha = 0.4, linewidth = 0.15) +
       geom_sf(data = pts_status, color = pts_color, size = 0.5, alpha = 1) +
-      labs(title = paste0(tools::toTitleCase(country), " - ", tools::toTitleCase(status_type))) +
+      labs(title = current_title) +
       theme_minimal() +
       theme(
         plot.title = element_text(hjust = 0.5, face = "bold", size = 13)
       )
   }) %>%
     set_names(paste0(country, "_", names(status_colors)))
+  
 })
 plots <- flatten(plots)
 

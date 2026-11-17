@@ -8,4 +8,5 @@ data/
 .DS_Store
 .RData
 .RDataTmp
-.Rhistory
+rosm.cache/
+
