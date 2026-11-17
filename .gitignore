@@ -9,4 +9,4 @@ data/
 .RData
 .RDataTmp
 rosm.cache/
-rosm.cache/osm
+rosm.cache/osm/
